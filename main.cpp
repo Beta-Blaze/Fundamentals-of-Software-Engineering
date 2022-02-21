@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <chrono>
 #include <random>
 #include <array>
@@ -27,6 +28,26 @@ void generate_array(std::array<std::array<int, 17>, 17> &arr){
         }
     }
 }
+
+/// Prints a 17x17 two-dimensional array with even spacing based on the max element contained in each line
+/// \param arr std::array containing 17 std::array containers of 17 int
+/// Parameter is taken by reference.
+void print_array(std::array<std::array<int, 17>, 17> &arr) {
+    unsigned long long temp_max = 0;
+    for (int i{}; i < LEN; i++) {
+        for (int j{}; j < LEN; j++) {
+            if (std::to_string(arr[i][j]).size() > temp_max)
+                temp_max = std::to_string(arr[i][j]).size();
+        }
+    }
+    for (int i{}; i < LEN; i++) {
+        for (int j{}; j < LEN; j++) {
+            std::cout << std::setw((int) temp_max) << arr[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
 
 int main() {
     return 0;
