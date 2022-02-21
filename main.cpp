@@ -49,6 +49,21 @@ void print_array(std::array<std::array<int, 17>, 17> &arr) {
 }
 
 
+/// Prints the maximum elements contained in each line of a 2D array
+/// \param arr std::array containing 17 std::array containers of 17 int
+/// Parameter is taken by reference.
+int get_max_elem_in_even_columns(std::array<std::array<int, 17>, 17> &arr) {
+    int temp_max = -INT_MAX - 1;
+    for (int j{1}; j < LEN; j += 2) {
+        for (int i{0}; i < LEN; i++) {
+            if (arr[i][j] > temp_max)
+                temp_max = arr[i][j];
+        }
+    }
+    return temp_max;
+}
+
+
 int main() {
     return 0;
 }
