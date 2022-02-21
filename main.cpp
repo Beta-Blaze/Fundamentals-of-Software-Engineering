@@ -32,7 +32,7 @@ void generate_array(std::array<std::array<int, 17>, 17> &arr){
 /// Prints a 17x17 two-dimensional array with even spacing based on the max element contained in each line
 /// \param arr std::array containing 17 std::array containers of 17 int
 /// Parameter is taken by reference.
-void print_array(std::array<std::array<int, 17>, 17> &arr) {
+void print_array(const std::array<std::array<int, 17>, 17> &arr) {
     unsigned long long temp_max = 0;
     for (int i{}; i < LEN; i++) {
         for (int j{}; j < LEN; j++) {
@@ -49,7 +49,7 @@ void print_array(std::array<std::array<int, 17>, 17> &arr) {
 }
 
 
-/// Prints the maximum elements contained in each line of a 2D array
+/// Returns the maximum elements contained in each line of a 2D array
 /// \param arr std::array containing 17 std::array containers of 17 int
 /// Parameter is taken by reference.
 int get_max_elem_in_even_columns(std::array<std::array<int, 17>, 17> &arr) {
@@ -63,6 +63,32 @@ int get_max_elem_in_even_columns(std::array<std::array<int, 17>, 17> &arr) {
     return temp_max;
 }
 
+/// Checks if elements on main and secondary diagonals are equal respectively
+/// \param arr std::array containing 17 std::array containers of 17 int
+/// \returns bool - result of comparison
+bool are_main_and_secondary_diagonals_equal(const std::array<std::array<int, 17>, 17> &arr) {
+    for(int i{0}; i < LEN; i++) {
+        if (arr[i][i] != arr[i][16 - i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+/// Returns the minimum element contained beneath the main diagonal of a 2D array
+/// \param arr std::array containing 17 std::array containers of 17 int
+/// \returns int - the minimum element
+bool get_min_element_beneath_main_diagonal (const std::array<std::array<int, 17>, 17> &arr) {
+    int min_element{INT_MAX};
+    for(int i{0}; i < LEN; i++) {
+        for (int j{0}; j < i; j++) {
+            min_element = std::min(min_element, arr[i][j]);
+        }
+    }
+    return min_element;
+}
 
 int main() {
     return 0;
