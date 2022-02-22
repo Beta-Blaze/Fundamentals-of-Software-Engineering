@@ -1,4 +1,5 @@
 #include "../include/martix.h"
+#include "climits"
 
  Matrix::Matrix() {
     this->generate_array();
@@ -41,7 +42,7 @@ void Matrix::print_array() {
 }
 
 int Matrix::get_max_elem_in_even_columns() {
-    int temp_max = -INT_MAX - 1;
+    int temp_max = -INT32_MAX - 1;
     for (int j{1}; j < LEN; j += 2) {
         for (int i{0}; i < LEN; i++) {
             if (array[i][j] > temp_max)
@@ -62,7 +63,7 @@ bool Matrix::are_main_and_secondary_diagonals_equal() {
 }
 
 bool Matrix::get_min_element_beneath_main_diagonal () {
-    int min_element{INT_MAX};
+    int min_element{INT32_MAX};
     for(int i{0}; i < LEN; i++) {
         for (int j{0}; j < i; j++) {
             min_element = std::min(min_element, array[i][j]);

@@ -5,14 +5,14 @@ using namespace std;
 const int MENU_LEN {5};
 
 void print_menu() {
-    system("cls");
+    system("clear");
     cout << "Выберите опцию" << endl;
     cout << "1. Пересоздать матрицу" << endl;
     cout << "2. Вывести матрицу" << endl;
     cout << "3. Проверить, равны ли главная и побочная диагонали" << endl;
     cout << "4. Вывести минимальный элемент в чётных столбцах" << endl;
     cout << "5. Вывести минимальный элемент под главной диагональю" << endl;
-    cout << "0. Выход" << endl;
+    cout << "0. Выход" << endl << endl;
 }
 
 
@@ -46,18 +46,20 @@ int main() {
                 matrix.print_array();
                 break;
             case 3:
-                matrix.are_main_and_secondary_diagonals_equal();
+                cout << (matrix.are_main_and_secondary_diagonals_equal() ? "Совпадают": "Не совпадают") << endl;
                 break;
             case 4:
-                matrix.get_max_elem_in_even_columns();
+                cout << matrix.get_max_elem_in_even_columns() << endl;
                 break;
             case 5:
-                matrix.get_min_element_beneath_main_diagonal();
+                cout << matrix.get_min_element_beneath_main_diagonal() << endl;
                 break;
             default:
                 break;
         }
-        system("pause");
+        if (value) {
+            system("read -rsp $'Press enter to continue...\\n'");
+        }
     }
     return 0;
 }
